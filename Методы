@@ -2,3 +2,4 @@ tuple1 = df['Price_euros'].min(), df['Price_euros'].max() # создает ко�
 model_year_mean = train.groupby('year')['price'].mean().reset_index()  # .reset_index() - нужна для индексации в сводной таблице
 model_year_mean.columns # выводит список названий всех колонок
 model_year_mean.columns = ['year', 'price_pred_year_mean'] # переименовывание нужно для того чтобы эту таблицу присоединенить в train
+train = train.merge(model_year_mean, how='left', on='year') # к таблице train присоединение таблицу model_year_mean по ключу year
