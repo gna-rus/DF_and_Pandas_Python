@@ -20,4 +20,23 @@ train['err'] = train['price_pred_mean'] - train['price'] # Находим отк
 
 from sklearn.metrics import mean_absolute_percentage_error, mean_absolute_error
 mean_absolute_error(train['price'],train['price_pred_median']) # считаем ошибку на треине по медиане (определяем +\- от среднего значения)
+mean_absolute_percentage_error(train['price'],train['price_pred_median']) # считаем ошибку в %
+####
+def engine_group(x):
+  if x <= 1.5:
+    return '<=1.5'
+  if x <= 2:
+    return '<=2'
+  return '>2'
+
+train['engine_group'] = train['engineSize'].apply(engine_group) # к каждой строке применяем функцию engine_group (разбиваем на группы)
+####
+# Выше было сделано разбиение на группы при помощи функции но можно это сделать при помощи cut
+train['engine_group2'] = pd.cut(train['engineSize'],[-float('inf'),1.5,2,float('inf')])
+# -float('inf') нужно для того чтобы включить 0.0 в самый первый диапазон
+####
+df[df['Company'] == 'HP']['Price_euros'].max() # Проводит фильтрацию (df['Company'] == 'HP') из тех строк что соответствуют этому условию
+# выбирается колонка Price_euros и в это колонке ищется max
+
+
 
