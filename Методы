@@ -1,0 +1,1 @@
+tuple1 = df['Price_euros'].min(), df['Price_euros'].max() # создает кортеж из двух элементов
