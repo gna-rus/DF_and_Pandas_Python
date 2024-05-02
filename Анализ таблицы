@@ -37,6 +37,8 @@ train['engine_group2'] = pd.cut(train['engineSize'],[-float('inf'),1.5,2,float('
 ####
 df[df['Company'] == 'HP']['Price_euros'].max() # Проводит фильтрацию (df['Company'] == 'HP') из тех строк что соответствуют этому условию
 # выбирается колонка Price_euros и в это колонке ищется max
+####
+df.value_counts('TypeName', normalize = True) # по колонке TypeName выводит информацию в процентном соотношении
 
 
 
