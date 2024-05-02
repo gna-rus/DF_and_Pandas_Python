@@ -18,3 +18,6 @@ train['price_pred_mean'] = train['price'].mean() # Находим среднее
 train['err'] = train['price_pred_mean'] - train['price'] # Находим отклонение от среднего. Видно что предсказывать цену просто отталкиваясь от среднего - дурная затея
 ####
 
+from sklearn.metrics import mean_absolute_percentage_error, mean_absolute_error
+mean_absolute_error(train['price'],train['price_pred_median']) # считаем ошибку на треине по медиане (определяем +\- от среднего значения)
+
