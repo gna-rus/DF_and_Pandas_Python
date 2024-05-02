@@ -1,1 +1,2 @@
 tuple1 = df['Price_euros'].min(), df['Price_euros'].max() # создает кортеж из двух элементов
+model_year_mean = train.groupby('year')['price'].mean().reset_index()  # .reset_index() - нужна для индексации в сводной таблице
