@@ -4,3 +4,5 @@ model_year_mean.columns # выводит список названий всех 
 model_year_mean.columns = ['year', 'price_pred_year_mean'] # переименовывание нужно для того чтобы эту таблицу присоединенить в train
 train = train.merge(model_year_mean, how='left', on='year') # к таблице train присоединение таблицу model_year_mean по ключу year
 df.shape # выводит кортеж с размерностью таблицы
+df.loc[3] # пытается взять строку из df по индексу, но если индекса такого нет в таблице то выдаст ошибку
+df.iloc[3] # пытается взять строку по порядковому номеру из таблицы
