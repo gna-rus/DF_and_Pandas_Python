@@ -12,7 +12,9 @@ df.sort_values('age') # сортирует всю таблицу по столб
 df.sort_values('age', ascending=False) # сортирует всю таблицу по столбцу age от большого к малому
 df.sort_values(['age', 'value']) # сортировка по двум признакам (сначала по age а потом в рамках одного значения age сортирует по value)) 
 
-
+####
+df.loc[df['col'] > condition, 'col'] = new_val
+# Этот код заменяет значения в колонке 'col', соответствующие условию 'condition', на новое значение 'new_val', обновляя DataFrame непосредственно в процессе работы.
 ####
 # В pandas нету in но есть isin
 filtered_df = df[df['Product_ID'].isin(['001', '003', '005'])]
