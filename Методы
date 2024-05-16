@@ -15,6 +15,7 @@ df.sort_values(['age', 'value']) # сортировка по двум призн
 ####
 avg = df.groupby('bedrooms').agg({'price':'mean'})
 # создаю сводную таблицу по основному признаку bedrooms и по этому призную для каждого уникального значения bedrooms выводится среднее значение что хранятся в price (таких связко ключ-значение может быть много)
+price = df.groupby('condition').agg({'price':['min', 'mean' , 'max']})
 ####
 
 ####
