@@ -26,7 +26,7 @@ bedrooms_floors = df.groupby(['bedrooms', 'floors']).agg({'price':'count'}).unst
 
 test = pd.crosstab(index = df['id'], columns = df['price']) # еще вариант сделать сводную таблицу
 ####
-
+bedrooms_floors.groups  # выводит просто список групп (название и индекси строк) из которых сформуриуется сводная таблица
 ####
 df.loc[df['col'] > condition, 'col'] = new_val
 # Этот код заменяет значения в колонке 'col', соответствующие условию 'condition', на новое значение 'new_val', обновляя DataFrame непосредственно в процессе работы.
