@@ -17,7 +17,12 @@ avg = df.groupby('bedrooms').agg({'price':'mean'})
 # создаю сводную таблицу по основному признаку bedrooms и по этому призную для каждого уникального значения bedrooms выводится среднее значение что хранятся в price (таких связко ключ-значение может быть много)
 price = df.groupby('condition').agg({'price':['min', 'mean' , 'max']}) # можно так
 view_waterfront = df.pivot_table(index = 'waterfront', aggfunc = 'count')['view'] # можно и так (aggfunc это аналог agg)
-view_waterfront = df.pivot_table(index='waterfront', aggfunc='count', values='view') # или так
+view_waterfront = df.pivot_table(index='waterfront', aggfunc='count', values='view', fill_value=0) # или так (fill_value - хаменяет NaN на 0; 
+# aggfunc='count' - считаем количество вхождений (то есть скольк острок имеет значение то или иное значение по waterfront)
+# values='view' - ограничивает вывод только по колонке 'view' (так как стоит count это необходимо так как будет просто дублирование информации от колонки к колонке))
+
+bedrooms_floors = df.groupby(['bedrooms', 'floors']).agg({'price':'count'}).unstack('floors') # unstack('floors') - создает матрицу где в ячейках указывается количество
+bedrooms_floors = df.groupby(['bedrooms', 'floors']).agg({'price':'count'}).unstack('floors').fillna(0) # fillna(0) - заменяет NaN на 0
 ####
 
 ####
