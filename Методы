@@ -23,6 +23,8 @@ view_waterfront = df.pivot_table(index='waterfront', columns = 'view', aggfunc='
 
 bedrooms_floors = df.groupby(['bedrooms', 'floors']).agg({'price':'count'}).unstack('floors') # unstack('floors') - создает матрицу где в ячейках указывается количество
 bedrooms_floors = df.groupby(['bedrooms', 'floors']).agg({'price':'count'}).unstack('floors').fillna(0) # fillna(0) - заменяет NaN на 0
+
+test = pd.crosstab(index = df['id'], columns = df['price']) # еще вариант сделать сводную таблицу
 ####
 
 ####
